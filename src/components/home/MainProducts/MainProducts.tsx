@@ -2,12 +2,15 @@
   MainProducts component is responsible for displaying the main products on the home page.
   It fetches the products from the Shopify store using the GraphQL Admin API.
 */
+import styles from "./MainProducts.module.sass";
+import Image from "next/image";
+
 const getProducts = async () => {
   /*
     The GraphQL query to fetch the first 23 products from the Shopify store.
   */
   const query = `{
-    products (first: 23) {
+    products (first: 5) {
       edges {
         node {
           id
@@ -60,12 +63,33 @@ const getProducts = async () => {
 */
 export const MainProducts = async () => {
   const products = await getProducts();
-  console.log("Products: ", products);
 
   return (
-    <section>
-      <h1>Products</h1>
-      <p>MainProducts section</p>
+    <section className={styles.MainProducts}>
+      <h3>✨ New products released!</h3>
+      <div className={styles.MainProducts__grid}>
+        {products?.map(
+          (product: {
+            id: string;
+            title: string;
+            description: string;
+            images: { src: string }[];
+          }) => {
+            // const imageSrc = product.images[0].src;
+            return (
+              <article key={product.id}>
+                <p>{product.title}</p>
+                {/* <Image
+                  src={imageSrc}
+                  fill
+                  alt={product.title}
+                  loading="eager"
+                /> */}
+              </article>
+            );
+          }
+        )}
+      </div>
     </section>
   );
 };
