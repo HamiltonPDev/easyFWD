@@ -1,14 +1,14 @@
-// "use client";
 import { Hero } from "app/components/home/Hero";
-import { MainProducts } from "app/components/home/MainProducts";
 import { Description } from "app/components/home/Description";
 
-export default function Home() {
+export default function HomeLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <div>
       <Hero />
       <Description />
-      <MainProducts />
+      {children}
     </div>
   );
 }

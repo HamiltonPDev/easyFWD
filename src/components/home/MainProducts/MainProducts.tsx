@@ -79,12 +79,14 @@ export const MainProducts = async () => {
             return (
               <article key={product.id}>
                 <p>{product.title}</p>
-                {/* <Image
-                  src={imageSrc}
-                  fill
-                  alt={product.title}
-                  loading="eager"
-                /> */}
+                {/* {
+                  <Image
+                    src={imageSrc}
+                    fill
+                    alt={product.title}
+                    loading="eager"
+                  />
+                } */}
               </article>
             );
           }
