@@ -4,7 +4,7 @@ export default function Layout({
   return (
     <html lang="en">
       <body>
-        <nav>Store navigation</nav>
+        <nav>category navigation</nav>
         {children}
       </body>
     </html>
