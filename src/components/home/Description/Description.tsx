@@ -2,7 +2,7 @@
 import Image from "next/image";
 import classNames from "classnames/bind";
 import { useState } from "react";
-import styles from "./Description.module.sass";
+import styles from "./Description.module.scss";
 
 export const Description = () => {
   const [hasBorder, setHasBorder] = useState(false);

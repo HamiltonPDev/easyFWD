@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./ProductCard.module.sass";
+import styles from "./ProductCard.module.scss";
 
 interface ProductType {
   handle: string;

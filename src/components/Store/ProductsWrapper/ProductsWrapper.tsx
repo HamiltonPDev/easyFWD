@@ -1,5 +1,5 @@
 import { ProductCard } from "../ProductCard";
-import styles from "./ProductsWrapper.module.sass";
+import styles from "./ProductsWrapper.module.scss";
 
 interface ProductType {
   id: string;
