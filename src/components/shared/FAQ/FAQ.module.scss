@@ -1,0 +1,78 @@
+.faqSectionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 720px;
+  padding: 0 64px;
+  margin: 0 auto;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.faqHeader,
+.faqCTA {
+  text-align: center;
+
+  a {
+    display: inline-block;
+  }
+}
+
+.faqList {
+  display: grid;
+  gap: 16px;
+
+  details {
+    font-size: 18px;
+    border-left: 0.5px solid #000;
+    border-right: 0.5px solid #000;
+    transition: border-color 0.3s, color 0.3s;
+
+    summary {
+      font-weight: 700;
+      list-style: none;
+      margin: 0;
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: #f9f3f3;
+      }
+    }
+
+    &.open {
+      border-color: #29b6d1; // Change border color when details is open
+      color: #29b6d1; // Change text color when details is open
+
+      summary {
+        background-color: #e0e0e0; // Change background color when details is open
+        color: #29b6d1; // Change text color when details is open
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      margin: 0;
+      padding: 20px 24px;
+      color: #29b6d1; // Change text color when details is open
+    }
+  }
+}
+
+.faqBottom {
+  margin-top: 1rem;
+  padding: 12px 24px;
+  background-color: #29b6d1;
+  border-radius: 5px;
+  width: fit-content;
+  color: #fff;
+  text-decoration: none;
+
+  a {
+    color: #ff0000;
+    text-decoration: none;
+  }
+}
