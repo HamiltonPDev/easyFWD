@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./FAQ.module.scss";
 
 export const FAQ = () => {
@@ -47,7 +48,9 @@ export const FAQ = () => {
             <h2>Still have questions?</h2>
             <p>Check out our full detailed FAQ page.</p>
           </header>
-          <a href="/faq" className={styles.faqBottom}>Visit FAQ</a>
+          <Link href="/faq" className={styles.faqBottom}>
+            Visit FAQ
+          </Link>
         </div>
       </div>
     </section>

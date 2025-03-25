@@ -26,30 +26,24 @@
     font-size: 18px;
     border-left: 0.5px solid #000;
     border-right: 0.5px solid #000;
-    transition: border-color 0.3s, color 0.3s;
+    cursor: pointer;
+
+    &[open] {
+      border-color: #29b6d1; // Change border color when details is open
+      color: #29b6d1; // Change text color when details is open
+    }
 
     summary {
       font-weight: 700;
       list-style: none;
       margin: 0;
       padding: 20px 24px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
 
       &:hover {
         background-color: #f9f3f3;
       }
     }
 
-    &.open {
-      border-color: #29b6d1; // Change border color when details is open
-      color: #29b6d1; // Change text color when details is open
-
-      summary {
-        background-color: #e0e0e0; // Change background color when details is open
-        color: #29b6d1; // Change text color when details is open
-      }
-    }
 
     p {
       font-size: 1rem;
@@ -57,7 +51,7 @@
       font-style: italic;
       margin: 0;
       padding: 20px 24px;
-      color: #29b6d1; // Change text color when details is open
+      // color: #29b6d1; // Change text color when details is open
     }
   }
 }
