@@ -1,0 +1,79 @@
+.footerSectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 80px 64px;
+  font-weight: 350;
+  // i want to select the second div in the footerSectionContainer
+  &>div:nth-child(2) {
+    text-align: center;
+  }
+}
+
+.footerSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 48px;
+  border: 1px solid $color-secondary;
+  border-radius: 10px;
+  flex-wrap: wrap;
+
+  address {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-style: normal;
+  }
+
+  address>div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  th {
+    text-align: left;
+    padding-bottom: 1rem;
+  }
+
+  tbody td {
+    padding-right: 40px;
+  }
+
+  h1 {
+    font-size: 1rem;
+    padding-bottom: 4px;
+  }
+
+  h1,
+  th {
+    font-weight: 600;
+  }
+
+  a {
+    color: $color-primary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-secondary;
+
+      img {
+        filter: invert(50%) sepia(100%) saturate(300%);
+      }
+    }
+  }
+
+  td a>div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  table {
+    a {
+      text-decoration: none;
+    }
+  }
+
+
+}
