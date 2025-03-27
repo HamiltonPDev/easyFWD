@@ -6,6 +6,7 @@ import { ShoppingCartIcon } from "../../icons/ShoppingCartIcon";
 import { navItems } from "app/utils/NavData";
 import { Button } from "../button/Button";
 import { NavMenu } from "./NavMenu";
+import { FaRegUser } from "react-icons/fa";
 
 export const Header = () => {
   return (
@@ -56,7 +57,22 @@ export const Header = () => {
             </div>
           </div>
         </div>
-        <NavMenu />
+        <div className={styles.Header__mobile}>
+          <Button
+            icon={<ShoppingCartIcon />}
+            color="transparent"
+            size="regular"
+            onClick={() => {}}
+          />
+          <Button
+            href="/store"
+            icon={<FaRegUser />}
+            color="primary"
+            size="regular"
+            onClick={() => {}}
+          />
+          <NavMenu />
+        </div>
       </nav>
     </header>
   );
