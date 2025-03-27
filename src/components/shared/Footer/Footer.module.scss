@@ -4,7 +4,6 @@
   gap: 2rem;
   margin: 80px 64px;
   font-weight: 350;
-  // i want to select the second div in the footerSectionContainer
   &>div:nth-child(2) {
     text-align: center;
   }
@@ -74,6 +73,4 @@
       text-decoration: none;
     }
   }
-
-
 }
