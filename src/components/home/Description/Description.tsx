@@ -19,7 +19,7 @@ export const Description = () => {
   return (
     <section className={styles.Description}>
       <button onClick={handleMouseEnter} className={buttonStyles}>
-        <div className={styles.Description__imageContainer}>
+        {/* <div className={styles.Description__imageContainer}>
           <Image
             src="/images/description.jpeg"
             alt="products marketplace"
@@ -28,7 +28,7 @@ export const Description = () => {
             placeholder="blur"
             blurDataURL="/images/description.jpeg"
           />
-        </div>
+        </div> */}
       </button>
       <div className={styles.Description_text}>
         <h2>Descriptions</h2>
