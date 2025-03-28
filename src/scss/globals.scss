@@ -12,10 +12,22 @@ body {
   line-height: 1.5;
 }
 
+// Smaller heading font size for mobile
 h1 {
-  font-size: 48px;
+  font-size: 32px;
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 24px; 
+}
+
+/* Styles for larger screens (tablet and desktop) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 48px; 
+  }
+
+  h2 {
+    font-size: 32px;
+  }
 }

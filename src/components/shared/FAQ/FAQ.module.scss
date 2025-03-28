@@ -2,71 +2,105 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 720px;
-  padding: 0 64px;
+  max-width: 100%;
+  padding: 1rem;
   margin: 0 auto;
   gap: 2rem;
-  flex-wrap: wrap;
-}
 
-.faqHeader,
-.faqCTA {
-  text-align: center;
-
-  a {
-    display: inline-block;
+  &>header,
+  div {
+    text-align: center;
   }
-}
 
-.faqList {
-  display: grid;
-  gap: 16px;
+  &>header,
+  div,
+  div header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  details {
-    font-size: 18px;
-    border-left: 0.5px solid #000;
-    border-right: 0.5px solid #000;
-    cursor: pointer;
+  &>header,
+  div {
+    gap: 1rem;
+  }
 
-    &[open] {
-      border-color: #29b6d1; // Change border color when details is open
-      color: #29b6d1; // Change text color when details is open
-    }
+  &>div header {
+    gap: 0.5rem;
+  }
 
-    summary {
-      font-weight: 700;
-      list-style: none;
-      margin: 0;
-      padding: 20px 24px;
+  .faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
-      &:hover {
-        background-color: #f9f3f3;
+    details {
+      border-left: 0.5px solid #000;
+      border-right: 0.5px solid #000;
+
+      &[open] {
+        border-color: #29b6d1; // Change border color when details is open
+        color: #29b6d1; // Change text color when details is open
+      }
+
+      summary {
+        font-weight: 700;
+        list-style: none;
+
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        
+      }
+
+      p {
+        font-weight: 400;
+        font-style: italic;
+        padding: 0.75rem 1rem;
+        // color: #29b6d1; // Change text color when details is open
       }
     }
+  }
 
+  .faqBottom {
+    font-size: 1rem;
+    padding: 12px 24px;
+    background-color: #29b6d1;
+    border-radius: 5px;
+    width: fit-content;
+    color: #fff;
+    text-decoration: none;
 
-    p {
-      font-size: 1rem;
-      font-weight: 400;
-      font-style: italic;
-      margin: 0;
-      padding: 20px 24px;
-      // color: #29b6d1; // Change text color when details is open
+    a {
+      color: #ff0000;
+      text-decoration: none;
     }
   }
 }
 
-.faqBottom {
-  margin-top: 1rem;
-  padding: 12px 24px;
-  background-color: #29b6d1;
-  border-radius: 5px;
-  width: fit-content;
-  color: #fff;
-  text-decoration: none;
+// Adjust styles for larger screens starting from 768px (tablet and desktop)
+@media (min-width: 768px) {
+  .faqSectionContainer {
+    font-size: 1.125rem;
+    max-width: 720px;
+    padding: 112px 64px;
+    gap: 5rem;
 
-  a {
-    color: #ff0000;
-    text-decoration: none;
+    &>header,
+    div {
+      gap: 1.5rem;
+    }
+
+    &>div header {
+      gap: 1rem;
+    }
+
+    .faqList {
+      gap: 1rem;
+
+      summary,
+      p {
+        padding: 1rem 1.5rem;
+      }
+    }
   }
 }
