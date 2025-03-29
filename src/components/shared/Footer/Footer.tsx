@@ -1,9 +1,10 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
+import { FaYoutube } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer} aria-labelledby="footer-title">
       <div className={styles.footerSectionContainer}>
         <div className={styles.footerSection}>
           <address>
@@ -11,18 +12,17 @@ export const Footer = () => {
               <img
                 src="/images/logo_easyfwd.png"
                 alt="EasyFWD logo"
-                width="155"
-                height="40"
+                width="255"
               />
             </Link>
             <div>
               <div>
-                <h1>Address:</h1>
+                <h3>Address:</h3>
                 <p>Piet Heinkade 11,</p>
                 <p>1019 BR Amsterdam</p>
               </div>
               <div>
-                <h1>Contact:</h1>
+                <h3>Contact:</h3>
                 <p>
                   <a href="tel:+31651366382">+31(0) 6 51 36 63 82</a>
                 </p>
@@ -32,93 +32,54 @@ export const Footer = () => {
               </div>
             </div>
           </address>
-          <table>
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Products</th>
-                <th>Follow Us</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <Link
-                    href="/about-us"
-                  >
-                    About Us
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    href="easyfwd"
-                  >
-                    EasyFWD
-                  </Link>
-                </td>
-                <td>
+          <div className={styles.footerLinks}>
+            <div>
+              <h3>Company</h3>
+              <ul>
+                <li>
+                  <Link href="/about-us">About Us</Link>
+                </li>
+                <li>
+                  <Link href="/faq">Frequently Asked Questions</Link>
+                </li>
+                <li>
+                  <Link href="/contact-us">Contact Us</Link>
+                </li>
+                <li>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>Products</h3>
+              <ul>
+                <li>
+                  <Link href="/easyfwd">EasyFWD</Link>
+                </li>
+                <li>
+                  <Link href="/easyflux">EasyFlux</Link>
+                </li>
+                <li>
+                  <Link href="/easyanalyse">EasyAnalyse</Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3>Follow Us</h3>
+              <ul>
+                <li>
                   <Link
                     href="https://www.youtube.com/watch?v=xpyr28OoOjk&ab_channel=TomvanDijk"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <div>
-                      <img
-                        src="/icons/Youtube.svg"
-                        alt="Youtube Icon"
-                        width="24"
-                        height="24"
-                      />
-                      Youtube
-                    </div>
+                    <FaYoutube className={styles.footerIcon} />
+                    Youtube
                   </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Link
-                    href="/faq"
-                  >
-                    Frequently Asked Questions
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    href="/easyflux"
-                  >
-                    EasyFlux
-                  </Link>
-                </td>
-                {/* <td>Instagram</td> */}
-              </tr>
-              <tr>
-                <td>
-                  <Link
-                    href="/contact-us"
-                  >
-                    Contact Us
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    href="/easyanalyse"
-                  >
-                    EasyAnalyse
-                  </Link>
-                </td>
-                {/* <td>LinkedIn</td> */}
-              </tr>
-              <tr>
-                <td>
-                  <Link
-                    href="/privacy-policy"
-                  >
-                    Privacy Policy
-                  </Link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div>
           <p>© 2025 EasyFWD. All rights reserved.</p>
