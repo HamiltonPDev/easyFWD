@@ -1,26 +1,14 @@
 // "use client";
 // import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Header } from "app/components/shared/Header";
 import { Footer } from "app/components/shared/Footer";
-import {FAQ} from "app/components/shared/FAQ";
-import "app/sass/globals.scss";
+import "app/scss/globals.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// if you loading a variable font, you dont need to specify th font weight
+const inter = Inter({
   subsets: ["latin"],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// const roboto = Roboto({
-//   variable: "--font-roboto",
-//   weight: []
-//   subsets: ["latin"],
-// });
 
 // export const metadata: Metadata = {
 //   title: "EasyFWD",
@@ -34,10 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={inter.className}>
         <Header />
         {children}
-        <FAQ />
         <Footer />
       </body>
     </html>

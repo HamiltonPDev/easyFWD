@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "app/sass/not-found.module.scss";
+import styles from "app/scss/not-found.module.scss";
 
 export default function NotFound() {
   return (

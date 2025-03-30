@@ -17,7 +17,6 @@ export const Header = () => {
             src="/images/logo_easyfwd.png"
             alt="EasyFWD"
             className={styles.Header__logo}
-            quality={80}
             width={155}
             height={40}
             loading="eager"
