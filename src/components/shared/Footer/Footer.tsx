@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import { FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
 export const Footer = () => {
   return (
@@ -9,10 +10,11 @@ export const Footer = () => {
         <div className={styles.footerSection}>
           <address>
             <Link href="/">
-              <img
+              <Image
                 src="/images/logo_easyfwd.png"
                 alt="EasyFWD logo"
-                width="255"
+                width={255}
+                height={65}
               />
             </Link>
             <div>
