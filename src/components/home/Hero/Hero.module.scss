@@ -46,3 +46,12 @@
   flex-shrink: 0;
   object-fit: cover;
 }
+
+/* Adjust styles for larger screens starting from 769px (tablet and desktop) */
+
+@media screen and (min-width: 769px) {
+  .Hero {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+}
