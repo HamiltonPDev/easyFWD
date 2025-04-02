@@ -7,6 +7,7 @@ interface ButtonProps {
   icon?: React.ReactNode;
   color?: "primary" | "secondary" | "transparent";
   size?: "small" | "medium" | "large" | "regular";
+  border?: boolean;
   href?: string;
 }
 
@@ -16,12 +17,15 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   color = "primary",
   size = "medium",
+  border = false,
   href,
 }: ButtonProps) => {
   if (!text && !icon) throw new Error("Button must have either text or icon");
 
   const content = text || icon;
-  const className = `${styles.Button} ${styles[color]} ${styles[size]}`;
+  const className = `${styles.Button} ${styles[color]} ${styles[size]} ${
+    border ? styles.border : ""
+  }`;
 
   return href ? (
     <Link href={href} className={className}>

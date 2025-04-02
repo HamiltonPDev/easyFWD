@@ -1,21 +1,48 @@
 .Hero {
-  & > h1 {
-    color: $color-primary;
-    font-size: 7rem;
-    margin: 3rem 0;
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-    text-align: center;
+  padding: 7rem 4rem;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    & > h1 {
+        font-size: 56px;
+        line-height: 120%;
+        display: inline-block;
+        color: #000;
+        text-align: center;
+    }
+    & > p {
+      font-size: 16px;
+      line-height: 24px;
+      color: #000;
+      text-align: center;
+      display: inline-block;
+    }
+  }
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
   }
 }
 
 .Hero__imageContainer {
+  width: 100%;
   position: relative;
-  width: 500px;
-  height: 300px;
-  & > img {
-    object-fit: cover;
-    border-radius: 1rem;
-    box-shadow: 0 0 4rem rgba(255, 255, 255, 0.2);
-  }
+  border-radius: 10px;
+  max-width: 100%;
+  overflow: hidden;
+  height: 700px;
+  flex-shrink: 0;
+  object-fit: cover;
 }
