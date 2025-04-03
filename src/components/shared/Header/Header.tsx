@@ -35,25 +35,25 @@ export const Header = () => {
               icon={<ShoppingCartIcon />}
               color="transparent"
               size="regular"
+              border={true}
               onClick={() => {
                 /* handle click */
               }}
             />
             <Button
-              href="/store"
+              href="/"
               text="Login"
               color="primary"
-              size="medium"
+              size="small"
               onClick={() => {}}
             />
-            <div className={styles["Header__button--demo"]}>
-              <Button
-                text="Book Demo"
-                color="secondary"
-                size="medium"
-                onClick={() => {}}
-              />
-            </div>
+            <Button
+              href="/store"
+              text="Book Demo"
+              color="secondary"
+              size="small"
+              onClick={() => {}}
+            />
           </div>
         </div>
         <div className={styles.Header__mobile}>
