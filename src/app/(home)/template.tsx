@@ -1,5 +1,5 @@
 import { Hero } from "app/components/home/Hero";
-import { Description } from "app/components/home/Description";
+import { Prices } from "app/components/home/Description/Prices";
 
 export default function HomeTemplate({
   children,
@@ -7,7 +7,7 @@ export default function HomeTemplate({
   return (
     <main>
       <Hero />
-      <Description />
+      <Prices />
       {children}
     </main>
   );
