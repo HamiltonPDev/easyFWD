@@ -133,3 +133,11 @@
   }
   
 }
+
+/* Adjust styles for larger screens starting from 769px (tablet and desktop) */
+@media screen and (min-width: 769px) {
+  .Header {
+    max-width: 1312px;
+    margin: 0 auto;
+  }
+}
