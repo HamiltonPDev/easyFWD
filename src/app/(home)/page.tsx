@@ -1,12 +1,12 @@
 // "use client";
 import { MainProducts } from "app/components/home/MainProducts";
-import {FAQ} from "app/components/shared/FAQ";
+import {SectionFaq} from "app/components/shared/SectionFaq";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <MainProducts />
-      <FAQ />
+      <SectionFaq />
     </main>
   );
 }
