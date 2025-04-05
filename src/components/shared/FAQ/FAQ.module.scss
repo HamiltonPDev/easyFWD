@@ -35,28 +35,63 @@
     gap: 0.5rem;
 
     details {
-      border-left: 0.5px solid #000;
-      border-right: 0.5px solid #000;
+      // border-radius: 5px;
+      // border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
 
-      &[open] {
-        border-color: #29b6d1; // Change border color when details is open
-        color: #29b6d1; // Change text color when details is open
+      &[open],
+      &:hover {
+        border-color: #29b6d1;
+        color: #29b6d1;
       }
 
       summary {
-        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
         list-style: none;
 
-        padding: 0.75rem 1rem;
+        // this targets the default arrow icon in the summary element and hides it
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        padding: 1rem;
         cursor: pointer;
-        
+
+        span {
+          display: flex;
+          align-items: center;
+
+          // when details is closed, show the plus icon
+          .plusIcon {
+            display: inline-block;
+          }
+
+          //  when details is closed, hide the minus icon
+          .minusIcon {
+            display: none;
+          }
+        }
       }
+
+      // when details is open, hide the plus icon and show the minus icon
+      &[open] summary .plusIcon {
+        display: none;
+      }
+
+      // when details is open, show the minus icon
+      &[open] summary .minusIcon {
+        display: inline-block;
+      }
+
 
       p {
         font-weight: 400;
         font-style: italic;
         padding: 0.75rem 1rem;
-        // color: #29b6d1; // Change text color when details is open
       }
     }
   }
@@ -82,7 +117,7 @@
   .faqSectionContainer {
     font-size: 1.125rem;
     max-width: 720px;
-    padding: 112px 64px;
+    padding: 80px 64px;
     gap: 5rem;
 
     &>header,
@@ -95,7 +130,7 @@
     }
 
     .faqList {
-      gap: 1rem;
+      gap: 1.5rem;
 
       summary,
       p {
