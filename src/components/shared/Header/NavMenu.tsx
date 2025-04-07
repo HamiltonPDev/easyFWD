@@ -24,9 +24,9 @@ export const NavMenu = () => {
             className={styles.NavMenu__line}
           >
             <ul className={styles.MenuList}>
-              {navItems.map(({ label }) => (
+              {navItems.map(({ label, path }) => (
                 <li key={label}>
-                  <Link href="/">{label}</Link>
+                  <Link href={path}>{label}</Link>
                 </li>
               ))}
             </ul>
