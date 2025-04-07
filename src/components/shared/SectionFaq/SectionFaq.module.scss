@@ -3,9 +3,9 @@
   flex-direction: column;
   justify-content: center;
   max-width: 100%;
-  padding: 1rem;
+  padding: 2rem 1rem;
   margin: 0 auto;
-  gap: 2rem;
+  gap: 3.5rem;
 
   &>header,
   div {
@@ -35,11 +35,11 @@
     gap: 0.5rem;
 
     details {
-      // border-radius: 5px;
-      // border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
-      border-left: 1px solid rgba(0, 0, 0, 0.1);
-      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      // border-left: 1px solid rgba(0, 0, 0, 0.1);
+      // border-right: 1px solid rgba(0, 0, 0, 0.1);
 
       &[open],
       &:hover {
@@ -58,7 +58,7 @@
           display: none;
         }
 
-        padding: 1rem;
+        padding: 1.5rem;
         cursor: pointer;
 
         span {
@@ -89,9 +89,10 @@
 
 
       p {
+        color: $color-primary;
         font-weight: 400;
-        font-style: italic;
-        padding: 0.75rem 1rem;
+        // font-style: italic;
+        padding: 0rem 1.5rem 1.5rem 1.5rem;
       }
     }
   }
@@ -118,7 +119,6 @@
     font-size: 1.125rem;
     max-width: 720px;
     padding: 80px 64px;
-    gap: 5rem;
 
     &>header,
     div {
@@ -130,8 +130,6 @@
     }
 
     .faqList {
-      gap: 1.5rem;
-
       summary,
       p {
         padding: 1rem 1.5rem;
