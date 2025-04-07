@@ -24,11 +24,13 @@ export const Header = () => {
         </Link>
         <div className={styles.Header__nav}>
           <ul className={styles.Header__list}>
-            {navItems.map(({ label }) => (
-              <Link href="/" key={label}>
-                <li>{label}</li>
-              </Link>
-            ))}
+            {navItems
+              .filter(({ path }) => path) // Ensure path is not undefined
+              .map(({ label, path }) => (
+                <Link href={path as string} key={label}>
+                  <li>{label}</li>
+                </Link>
+              ))}
           </ul>
           <div className={styles.Header__buttons}>
             <Button
