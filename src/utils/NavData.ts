@@ -17,6 +17,7 @@ export const navItems = [
   },
   {
     label: "FAQ",
+    path: "/faq",
   },
   {
     label: "Contact",

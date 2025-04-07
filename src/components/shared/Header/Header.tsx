@@ -4,11 +4,15 @@ import styles from "./Header.module.scss";
 import Image from "next/image";
 import { ShoppingCartIcon } from "../../icons/ShoppingCartIcon";
 import { navItems } from "app/utils/NavData";
+import { usePathname } from "next/navigation";
 import { Button } from "../button/Button";
 import { NavMenu } from "./NavMenu";
 import { FaRegUser } from "react-icons/fa";
 
 export const Header = () => {
+  const pathname = usePathname();
+  const isEasyAnalyse = pathname.includes("/easyAnalyse");
+
   return (
     <header>
       <nav className={styles.Header}>
@@ -42,13 +46,15 @@ export const Header = () => {
                 /* handle click */
               }}
             />
-            <Button
-              href="/"
-              text="Login"
-              color="primary"
-              size="small"
-              onClick={() => {}}
-            />
+            {isEasyAnalyse && (
+              <Button
+                href="/"
+                text="Login"
+                color="primary"
+                size="small"
+                onClick={() => {}}
+              />
+            )}
             <Button
               href="/store"
               text="Book Demo"
@@ -65,13 +71,15 @@ export const Header = () => {
             size="regular"
             onClick={() => {}}
           />
-          <Button
-            href="/store"
-            icon={<FaRegUser />}
-            color="primary"
-            size="regular"
-            onClick={() => {}}
-          />
+          {isEasyAnalyse && (
+            <Button
+              href="/store"
+              icon={<FaRegUser />}
+              color="primary"
+              size="regular"
+              onClick={() => {}}
+            />
+          )}
           <NavMenu />
         </div>
       </nav>
