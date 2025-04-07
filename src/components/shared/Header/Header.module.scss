@@ -20,10 +20,7 @@
 }
 .Header__list {
   display: flex;
-  overflow: hidden;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
+  align-items: center;
   list-style: none;
   gap: 32px;
   a {
