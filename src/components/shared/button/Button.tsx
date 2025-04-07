@@ -6,7 +6,7 @@ interface ButtonProps {
   onClick: () => void;
   icon?: React.ReactNode;
   color?: "primary" | "secondary" | "transparent";
-  size?: "small" | "medium" | "large" | "regular";
+  size?: "small" | "medium" | "large" | "regular" | "rounded";
   border?: boolean;
   href?: string;
 }
