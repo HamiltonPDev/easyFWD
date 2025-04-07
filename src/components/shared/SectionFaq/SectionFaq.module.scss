@@ -1,0 +1,139 @@
+.faqSectionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  padding: 2rem 1rem;
+  margin: 0 auto;
+  gap: 3.5rem;
+
+  &>header,
+  div {
+    text-align: center;
+  }
+
+  &>header,
+  div,
+  div header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &>header,
+  div {
+    gap: 1rem;
+  }
+
+  &>div header {
+    gap: 0.5rem;
+  }
+
+  .faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    details {
+      border-radius: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      // border-left: 1px solid rgba(0, 0, 0, 0.1);
+      // border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+      &[open],
+      &:hover {
+        border-color: #29b6d1;
+        color: #29b6d1;
+      }
+
+      summary {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        list-style: none;
+
+        // this targets the default arrow icon in the summary element and hides it
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        padding: 1.5rem;
+        cursor: pointer;
+
+        span {
+          display: flex;
+          align-items: center;
+
+          // when details is closed, show the plus icon
+          .plusIcon {
+            display: inline-block;
+          }
+
+          //  when details is closed, hide the minus icon
+          .minusIcon {
+            display: none;
+          }
+        }
+      }
+
+      // when details is open, hide the plus icon and show the minus icon
+      &[open] summary .plusIcon {
+        display: none;
+      }
+
+      // when details is open, show the minus icon
+      &[open] summary .minusIcon {
+        display: inline-block;
+      }
+
+
+      p {
+        color: $color-primary;
+        font-weight: 400;
+        // font-style: italic;
+        padding: 0rem 1.5rem 1.5rem 1.5rem;
+      }
+    }
+  }
+
+  .faqBottom {
+    font-size: 1rem;
+    padding: 12px 24px;
+    background-color: #29b6d1;
+    border-radius: 5px;
+    width: fit-content;
+    color: #fff;
+    text-decoration: none;
+
+    a {
+      color: #ff0000;
+      text-decoration: none;
+    }
+  }
+}
+
+// Adjust styles for larger screens starting from 768px (tablet and desktop)
+@media (min-width: 768px) {
+  .faqSectionContainer {
+    font-size: 1.125rem;
+    max-width: 720px;
+    padding: 80px 64px;
+
+    &>header,
+    div {
+      gap: 1.5rem;
+    }
+
+    &>div header {
+      gap: 1rem;
+    }
+
+    .faqList {
+      summary,
+      p {
+        padding: 1rem 1.5rem;
+      }
+    }
+  }
+}

@@ -1,12 +1,12 @@
 // "use client";
-import { MainProducts } from "app/components/home/MainProducts";
-import {FAQ} from "app/components/shared/FAQ";
+import { Hero } from "app/components/home/Hero";
+import { Logos } from "app/components/home/Logos";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
-      <MainProducts />
-      <FAQ />
+      <Hero />
+      <Logos />
     </main>
   );
 }

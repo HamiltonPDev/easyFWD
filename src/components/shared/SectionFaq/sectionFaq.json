@@ -1,0 +1,34 @@
+{
+  "header": {
+    "title": "Frequently Asked Questions",
+    "description": "These are general FAQs. If you’re looking for more in-depth answers, head over to our extended FAQ page."
+  },
+  "faqs": [
+    {
+      "question": "What is a web application?",
+      "answer": "A web application is an application that runs on a web server and can be accessed via a web browser."
+    },
+    {
+      "question": "What about privacy?",
+      "answer": "We take privacy seriously and comply with GDPR legislation."
+    },
+    {
+      "question": "The versions of EasyFWD.",
+      "answer": "There are three versions of EasyFWD: Bronze, Silver, and Gold."
+    },
+    {
+      "question": "What does the vitality meter say?",
+      "answer": "The vitality meter indicates how vital you are."
+    },
+    {
+      "question": "How do I order EasyFWD?",
+      "answer": "You can order EasyFWD through our website."
+    }
+  ],
+  "cta": {
+    "title": "Still have questions?",
+    "description": "Check out our full detailed FAQ page.",
+    "linkText": "Visit FAQ",
+    "linkHref": "/faq"
+  }
+}
