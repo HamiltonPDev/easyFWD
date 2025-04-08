@@ -1,0 +1,63 @@
+{
+  "header": {
+    "subheading": "Services",
+    "title": "Our Services Made For You?",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "services": [
+    {
+      "icon": {
+        "src": "icons/services-icon-1.svg",
+        "alt": "Services icon1",
+        "width": 62,
+        "height": 62
+      },
+      "title": "EasyFWD",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "cta-button": {
+        "linkText": "Learn more",
+        "linkHref": "/easyFWD"
+      },
+      "cta-button-1": {
+        "linkText": "Get started",
+        "linkHref": "/pricing"
+      }
+    },
+    {
+      "icon": {
+        "src": "icons/services-icon-2.svg",
+        "alt": "Services icon2",
+        "width": 62,
+        "height": 62
+      },
+      "title": "EasyFlux",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "cta-button": {
+        "linkText": "Learn more",
+        "linkHref": "/easyFlux"
+      },
+      "cta-button-1": {
+        "linkText": "Get started",
+        "linkHref": "/pricing"
+      }
+    },
+    {
+      "icon": {
+        "src": "icons/services-icon-3.svg",
+        "alt": "Services icon3",
+        "width": 62,
+        "height": 62
+      },
+      "title": "EasyAnalyse",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "cta-button": {
+        "linkText": "Learn more",
+        "linkHref": "/easyAnalyse"
+      },
+      "cta-button-1": {
+        "linkText": "Sign In",
+        "linkHref": "/sign-in"
+      }
+    }
+  ]
+}
