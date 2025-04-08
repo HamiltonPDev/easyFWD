@@ -1,0 +1,115 @@
+.Services__section {
+  display: flex;
+  justify-content: center;
+  // this border is probably temporary, later there will be a component made for deviding the section so it matches the design
+  //   border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.Services,
+.Services__ header,
+.Services__list,
+.Services__item,
+.Services__item div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Services {
+  padding: 2rem 1rem 0rem 1rem;
+  gap: 2rem;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .Services__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    p {
+      max-width: 500px;
+    }
+  }
+
+  .Services__list {
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding-bottom: 2rem;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+
+    .Services__item {
+      .Services__itemContainer {
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.07);
+        gap: 2rem;
+
+        & > div {
+          figure {
+            margin-bottom: 1.5rem;
+          }
+        }
+
+        div:nth-child(2) {
+          flex-direction: row;
+          gap: 0.5rem;
+
+          a[href="/sign-in"] {
+            background-color: green;
+            &:hover {
+              background-color: darkgreen;
+            }
+          }
+        }
+
+        p {
+          padding-top: 1rem;
+          border-top: solid 1px rgb(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+// Adjust styles for larger screens starting from 769px (tablet and desktop)
+@media (min-width: 769px) {
+  .Services__sectionContainer {
+    max-width: 1440px;
+
+    .Services {
+      padding: 112px 64px 0px 64px;
+      gap: 5rem;
+
+      .Services__header {
+        h2 {
+          font-size: 1.5rem;
+        }
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+      .Services__list {
+        flex-direction: row;
+        gap: 2rem;
+        padding-bottom: 7rem;
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+
+        .Services__item {
+          width: 415px;
+        }
+      }
+    }
+  }
+}
