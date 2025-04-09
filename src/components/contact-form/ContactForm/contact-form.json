@@ -1,0 +1,88 @@
+{
+  "header": {
+    "subheading": "Contact us",
+    "title": "Get in Touch!",
+    "description": "Select your preferred topic and let us know how we can help."
+  },
+  "contactDetails": {
+    "email": "info@easyfwd.nl",
+    "telephone": "+31(0) 6 51 36 63 82",
+    "address": "123 Sample St, Sydney NSW 2000 AU"
+  },
+  "form": {
+    "fields": [
+      {
+        "label": "First name",
+        "type": "text",
+        "name": "firstName",
+        "placeholder": "Enter your first name",
+        "required": true
+      },
+      {
+        "label": "Last name",
+        "type": "text",
+        "name": "lastName",
+        "placeholder": "Enter your last name",
+        "required": true
+      },
+      {
+        "label": "Email",
+        "type": "email",
+        "name": "email",
+        "placeholder": "Enter your email",
+        "required": true
+      },
+      {
+        "label": "Phone number",
+        "type": "tel",
+        "name": "phone",
+        "placeholder": "Enter your phone number",
+        "required": false
+      },
+      {
+        "label": "Which product are you contacting us about?",
+        "type": "select",
+        "name": "product",
+        "placeholder": "Select one...",
+        "required": true,
+        "options": [
+          "EasyFWD",
+          "EasyFlux",
+          "EasyAnalyse",
+          "General / Not sure"
+        ]
+      },
+      {
+        "label": "What best describes your situation?",
+        "type": "radio",
+        "name": "situation",
+        "required": true,
+        "options": [
+          "Book a Demo",
+          "Pricing & Plans",
+          "Technical Support",
+          "Partnership Inquiry",
+          "Feedback",
+          "Other"
+        ]
+      },
+      {
+        "label": "Message",
+        "type": "textarea",
+        "name": "message",
+        "placeholder": "Type your message...",
+        "required": true,
+        "rows": 10
+      },
+      {
+        "label": "I accept the Terms",
+        "type": "checkbox",
+        "name": "terms",
+        "required": true
+      }
+    ],
+    "submit-button": {
+      "linkText": "Submit"
+    }
+  }
+}

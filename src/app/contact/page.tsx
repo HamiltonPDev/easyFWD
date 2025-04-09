@@ -1,7 +1,11 @@
+import { ContactForm } from "app/components/contact-form/ContactForm";
+import { Logos } from "app/components/shared/Logos";
+
 export default function EasyFWD() {
   return (
     <main>
-      <h1>Contact Page</h1>
+      <ContactForm />
+      <Logos />
     </main>
   );
 }
