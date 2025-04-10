@@ -80,7 +80,7 @@ export const ContactForm = () => {
             className={styles.ContactForm__form}
             onSubmit={handleSubmit(onSubmit)}
           >
-            {isSubmitSuccessful && success && (
+            {/* {isSubmitSuccessful && success && (
               <p className={styles.ContactForm__successMessage}>
                 Your message has been sent successfully!
               </p>
@@ -89,7 +89,7 @@ export const ContactForm = () => {
               <p className={styles.ContactForm__errorMessage}>
                 There was an error sending your message. Please try again.
               </p>
-            )}
+            )} */}
 
             {form.fields.map((field, index) => {
               if (field.type === "textarea") {
@@ -222,6 +222,17 @@ export const ContactForm = () => {
               disabled={isSubmitting}
               onClick={() => {}}
             />
+
+            {isSubmitSuccessful && success && (
+              <p className={styles.ContactForm__successMessage}>
+                Your message has been sent successfully!
+              </p>
+            )}
+            {error && (
+              <p className={styles.ContactForm__errorMessage}>
+                There was an error sending your message. Please try again.
+              </p>
+            )}
           </form>
         </div>
       </div>
