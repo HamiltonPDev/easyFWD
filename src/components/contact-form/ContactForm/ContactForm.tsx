@@ -180,11 +180,15 @@ export const ContactForm = () => {
                     key={index}
                     className={styles.ContactForm__labelCheckbox}
                   >
-                    <input
-                      type="checkbox"
-                      {...register(field.name, { required: field.required })}
-                    />{" "}
-                    {field.label}
+                    <div>
+                      <input
+                        type="checkbox"
+                        {...register(field.name, {
+                          required: field.required,
+                        })}
+                      />
+                      {field.label}
+                    </div>
                     {errors[field.name] && (
                       <span className={styles.ContactForm__errorMessage}>
                         {field.errorMessage}

@@ -8,7 +8,9 @@
 .ContactForm__fieldset,
 .ContactForm__radioLabel,
 .ContactForm__labelTextarea,
-.ContactForm__labelCheckbox {
+.ContactForm__labelCheckbox,
+.ContactForm__labelCheckbox > div,
+.ContactForm__labelCheckbox span {
   display: flex;
   ul {
     list-style: none;
@@ -28,13 +30,15 @@
 
 .ContactForm__section,
 .ContactForm__form,
-.ContactForm__labelCheckbox {
+.ContactForm__labelCheckbox,
+.ContactForm__labelCheckbox > div,
+.ContactForm__labelCheckbox span {
   justify-content: center;
 }
 
 .ContactForm__contactDetails li,
 .ContactForm__radioLabel,
-.ContactForm__labelCheckbox {
+.ContactForm__labelCheckbox > div{
   align-items: center;
   gap: 0.5rem;
 }
@@ -88,7 +92,6 @@
     border-radius: 5px;
   }
 
-
   & select {
     appearance: none;
     -webkit-appearance: none;
@@ -97,7 +100,7 @@
     // Add custom icon
     background: url("/Icons/chevron-down.svg") no-repeat right 0.75rem center;
     background-size: 1rem;
-    padding-right: 2rem; 
+    padding-right: 2rem;
   }
 
   & fieldset {
@@ -118,7 +121,6 @@
 }
 
 .ContactForm__labelCheckbox {
-  flex-direction: row;
   input {
     width: 1.125rem;
     height: 1.125rem;
@@ -130,6 +132,7 @@
 }
 
 .ContactForm__errorMessage {
+  display: block;
   color: #e53935;
   font-size: 0.875rem;
   margin-top: 0.25rem;
@@ -180,7 +183,8 @@
     }
 
     .ContactForm__form,
-    .ContactForm__labelCheckbox {
+    .ContactForm__labelCheckbox > div,
+    .ContactForm__labelCheckbox span {
       justify-content: start;
     }
   }
