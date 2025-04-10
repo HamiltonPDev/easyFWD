@@ -4,13 +4,42 @@ import styles from "./ContactForm.module.scss";
 import content from "./contact-form.json";
 import { Button } from "../../shared/button/Button";
 import { MdEmail, MdLocalPhone, MdLocationOn } from "react-icons/md";
-import dynamic from "next/dynamic";
-
-// Dynamically import react-select to avoid SSR issues
-const Select = dynamic(() => import("react-select"), { ssr: false });
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export const ContactForm = () => {
   const { header, contactDetails, form } = content;
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+    reset,
+  } = useForm();
+
+  const onSubmit = async (data: any) => {
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        reset();
+      } else {
+        throw new Error("Failed to send mail");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setError(true);
+    }
+  };
 
   return (
     <section
@@ -47,7 +76,21 @@ export const ContactForm = () => {
             </ul>
           </header>
 
-          <form className={styles.ContactForm__form}>
+          <form
+            className={styles.ContactForm__form}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            {isSubmitSuccessful && success && (
+              <p className={styles.ContactForm__successMessage}>
+                Your message has been sent successfully!
+              </p>
+            )}
+            {error && (
+              <p className={styles.ContactForm__errorMessage}>
+                There was an error sending your message. Please try again.
+              </p>
+            )}
+
             {form.fields.map((field, index) => {
               if (field.type === "textarea") {
                 return (
@@ -57,11 +100,15 @@ export const ContactForm = () => {
                   >
                     {field.label}
                     <textarea
-                      name={field.name}
+                      {...register(field.name, { required: field.required })}
                       placeholder={field.placeholder}
-                      required={field.required}
                       rows={field.rows}
                     />
+                    {errors[field.name] && (
+                      <span className={styles.ContactForm__errorMessage}>
+                        {field.errorMessage}
+                      </span>
+                    )}
                   </label>
                 );
               }
@@ -73,14 +120,23 @@ export const ContactForm = () => {
                     className={styles.ContactForm__labelSelect}
                   >
                     {field.label}
-                    <Select
-                      options={field.options?.map((option: string) => ({
-                        value: option,
-                        label: option,
-                      }))}
-                      placeholder={field.placeholder}
-                      name={field.name}
-                    />
+                    <select
+                      {...register(field.name, { required: field.required })}
+                    >
+                      <option value="" disabled>
+                        {field.placeholder}
+                      </option>
+                      {field.options?.map((option: string, id: number) => (
+                        <option key={id} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                      {errors[field.name] && (
+                        <span className={styles.ContactForm__errorMessage}>
+                          {field.errorMessage}
+                        </span>
+                      )}
+                    </select>
                   </label>
                 );
               }
@@ -100,14 +156,20 @@ export const ContactForm = () => {
                         className={styles.ContactForm__radioLabel}
                       >
                         <input
+                          {...register(field.name, {
+                            required: field.required,
+                          })}
                           type="radio"
-                          name={field.name}
                           value={option}
-                          required={field.required}
                         />
                         {option}
                       </label>
                     ))}
+                    {errors[field.name] && (
+                      <span className={styles.ContactForm__errorMessage}>
+                        {field.errorMessage}
+                      </span>
+                    )}
                   </fieldset>
                 );
               }
@@ -120,10 +182,14 @@ export const ContactForm = () => {
                   >
                     <input
                       type="checkbox"
-                      name={field.name}
-                      required={field.required}
+                      {...register(field.name, { required: field.required })}
                     />{" "}
                     {field.label}
+                    {errors[field.name] && (
+                      <span className={styles.ContactForm__errorMessage}>
+                        {field.errorMessage}
+                      </span>
+                    )}
                   </label>
                 );
               }
@@ -133,17 +199,23 @@ export const ContactForm = () => {
                   {field.label}
                   <input
                     type={field.type}
-                    name={field.name}
                     placeholder={field.placeholder}
-                    required={field.required}
+                    {...register(field.name, { required: field.required })}
                   />
+                  {errors[field.name] && (
+                    <span className={styles.ContactForm__errorMessage}>
+                      {field.errorMessage}
+                    </span>
+                  )}
                 </label>
               );
             })}
             <Button
               text={form["submit-button"].linkText}
+              buttonType={form["submit-button"].type}
               color="secondary"
               size="medium"
+              disabled={isSubmitting}
               onClick={() => {}}
             />
           </form>
