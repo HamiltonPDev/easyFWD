@@ -1,0 +1,147 @@
+.ContactForm__section,
+.ContactForm,
+.ContactForm__header,
+.ContactForm__contactDetails li,
+.ContactForm__form,
+.ContactForm__label,
+.ContactForm__labelSelect,
+.ContactForm__fieldset,
+.ContactForm__radioLabel,
+.ContactForm__labelTextarea,
+.ContactForm__labelCheckbox {
+  display: flex;
+  ul {
+    list-style: none;
+
+    .contactIcons {
+      padding: 0.3rem 0;
+      width: 24px;
+      height: 24px;
+    }
+
+    a {
+      color: $color-primary;
+      text-decoration: none;
+    }
+  }
+}
+
+.ContactForm__section,
+.ContactForm__form,
+.ContactForm__labelCheckbox {
+  justify-content: center;
+}
+
+.ContactForm__contactDetails li,
+.ContactForm__radioLabel,
+.ContactForm__labelCheckbox {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ContactForm,
+.ContactForm__header,
+.ContactForm__label,
+.ContactForm__labelSelect,
+.ContactForm__labelTextarea,
+.ContactForm__labelCheckbox {
+  flex-direction: column;
+}
+.ContactForm__label,
+.ContactForm__labelSelect,
+.ContactForm__labelTextarea,
+.ContactForm__labelCheckbox {
+  width: 100%;
+}
+
+.ContactForm {
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+}
+
+.ContactForm__header {
+  padding-bottom: 0.75rem;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+  gap: 1.5rem;
+  h2 {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.125rem;
+  }
+}
+
+.ContactForm__form {
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  & input:not([type="checkbox"]):not([type="radio"]),
+  & textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+    border: 1px solid rgb(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  & fieldset {
+    flex-wrap: wrap;
+    border: none;
+    justify-content: space-between;
+    padding: 1rem 0rem;
+    gap: 0.5rem;
+
+    label {
+      width: 296px;
+      input {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+  }
+}
+
+.ContactForm__labelCheckbox {
+  flex-direction: row;
+  input {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+}
+
+.ContactForm__labelSelect > div {
+  margin-top: 0.5rem;
+}
+
+// Adjust styles for larger screens starting from 769px (tablet and desktop)
+@media (min-width: 769px) {
+  .ContactForm__sectionContainer {
+    max-width: 1440px;
+
+    .ContactForm {
+      justify-content: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 112px 64px;
+      gap: 5rem;
+    }
+
+    .ContactForm__form,
+    .ContactForm__header {
+      gap: 1.5rem;
+      width: 616px;
+    }
+
+    .ContactForm__label {
+      max-width: 296px;
+    }
+
+    .ContactForm__form,
+    .ContactForm__labelCheckbox {
+      justify-content: start;
+    }
+  }
+}
