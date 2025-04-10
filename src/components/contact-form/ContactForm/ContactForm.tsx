@@ -3,6 +3,11 @@
 import styles from "./ContactForm.module.scss";
 import content from "./contact-form.json";
 import { Button } from "../../shared/button/Button";
+import { MdEmail, MdLocalPhone, MdLocationOn } from "react-icons/md";
+import dynamic from "next/dynamic";
+
+// Dynamically import react-select to avoid SSR issues
+const Select = dynamic(() => import("react-select"), { ssr: false });
 
 export const ContactForm = () => {
   const { header, contactDetails, form } = content;
@@ -24,18 +29,21 @@ export const ContactForm = () => {
             </div>
             <ul className={styles.ContactForm__contactDetails}>
               <li>
-                📧{" "}
+                <MdEmail className={styles.contactIcons} />
                 <a href={`mailto:${contactDetails.email}`}>
                   {contactDetails.email}
                 </a>
               </li>
               <li>
-                📞{" "}
+                <MdLocalPhone className={styles.contactIcons} />
                 <a href={`tel:${contactDetails.telephone}`}>
                   {contactDetails.telephone}
                 </a>
               </li>
-              <li>📍 {contactDetails.address}</li>
+              <li>
+                <MdLocationOn className={styles.contactIcons} />
+                {contactDetails.address}
+              </li>
             </ul>
           </header>
 
@@ -65,14 +73,14 @@ export const ContactForm = () => {
                     className={styles.ContactForm__labelSelect}
                   >
                     {field.label}
-                    <select name={field.name} required={field.required}>
-                      <option value="">{field.placeholder}</option>
-                      {field.options?.map((option: string, id: number) => (
-                        <option key={id} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
+                    <Select
+                      options={field.options?.map((option: string) => ({
+                        value: option,
+                        label: option,
+                      }))}
+                      placeholder={field.placeholder}
+                      name={field.name}
+                    />
                   </label>
                 );
               }
