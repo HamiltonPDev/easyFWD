@@ -5,7 +5,7 @@ interface ButtonProps {
   text?: string;
   onClick: () => void;
   icon?: React.ReactNode;
-  color?: "primary" | "secondary" | "transparent";
+  color?: "primary" | "secondary" | "transparent" | "white";
   size?: "small" | "medium" | "large" | "regular" | "rounded";
   border?: boolean;
   href?: string;

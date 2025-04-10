@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "./Prices.module.scss";
 import { plans } from "../../../utils/Prices";
+import { FaCheckCircle } from "react-icons/fa";
 import { Button } from "../../shared/button/Button";
 
 export const Prices = () => {
@@ -51,12 +52,18 @@ export const Prices = () => {
                   {plan.description}
                 </div>
               </div>
-              <div className={styles.Divider} />
-              <div>
-                <p className={styles.Price}>
-                  <strong>{plan.price}</strong>/year
-                </p>
-                <p>description</p>
+              <div
+                className={`${styles.Divider} ${
+                  plan.highlight ? styles.HighlightedDivider : ""
+                }`}
+              />
+
+              <div className={styles.Price}>
+                <b>
+                  <span className={styles.span}>{plan.price}</span>
+                  <span className={styles.Price__year}>/year</span>
+                </b>
+                <div className={styles.text}>Lorem ipsum dolor sit amet</div>
               </div>
               <button
                 className={
@@ -72,7 +79,9 @@ export const Prices = () => {
                 <p>Everything in our brons plan:</p>
                 <ul>
                   {plan.features.map((f, i) => (
-                    <li key={i}>✔ {f}</li>
+                    <li key={i}>
+                      <FaCheckCircle /> {f}
+                    </li>
                   ))}
                 </ul>
               </div>

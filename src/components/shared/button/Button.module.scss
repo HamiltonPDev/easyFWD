@@ -29,6 +29,15 @@
   }
 }
 
+.white {
+  background-color: white;
+  color: $color-primary;
+  &:hover {
+    background-color: $color-primary;
+    color: white;
+  }
+}
+
 .border {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
