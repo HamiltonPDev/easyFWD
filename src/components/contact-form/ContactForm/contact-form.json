@@ -44,9 +44,9 @@
         "errorMessage": "Please enter a valid phone number"
       },
       {
-        "label": "Which product are you contacting us about?",
+        "label": "Which service are you contacting us about?",
         "type": "select",
-        "name": "product",
+        "name": "service",
         "placeholder": "Select one...",
         "required": true,
         "errorMessage": "Please select a service",

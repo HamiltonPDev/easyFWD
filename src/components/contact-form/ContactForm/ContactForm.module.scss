@@ -12,7 +12,7 @@
 .ContactForm__labelCheckbox > div,
 .ContactForm__labelCheckbox span,
 .ContactForm__successMessage,
-.ContactForm__errorMessage {
+.ContactForm button + p {
   display: flex;
   ul {
     list-style: none;
@@ -36,7 +36,7 @@
 .ContactForm__labelCheckbox > div,
 .ContactForm__labelCheckbox span,
 .ContactForm__successMessage,
-.ContactForm__errorMessage {
+.ContactForm button + p {
   justify-content: center;
 }
 
@@ -60,7 +60,7 @@
 .ContactForm__labelTextarea,
 .ContactForm__labelCheckbox,
 .ContactForm__successMessage,
-.ContactForm__errorMessage {
+.ContactForm button + p {
   width: 100%;
 }
 
@@ -133,12 +133,7 @@
   }
 }
 
-.ContactForm__labelSelect > div {
-  margin-top: 0.5rem;
-}
-
-.ContactForm__successMessage,
-.ContactForm__errorMessage {
+.ContactForm button + p {
   font-size: 0.875rem;
   margin-top: 1.5rem;
   // using animation to fade in the message
@@ -155,6 +150,8 @@
 
 .ContactForm__errorMessage {
   color: #e53935;
+  margin-top: 0.5rem;
+  animation: fadeIn 0.3s ease-in-out;
 }
 // this is a reusable animation for fading in elements
 // it starts with opacity 0 and moves the element slightly up

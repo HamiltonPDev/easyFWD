@@ -21,7 +21,7 @@ export const ContactForm = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("/api/send-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,17 +80,6 @@ export const ContactForm = () => {
             className={styles.ContactForm__form}
             onSubmit={handleSubmit(onSubmit)}
           >
-            {/* {isSubmitSuccessful && success && (
-              <p className={styles.ContactForm__successMessage}>
-                Your message has been sent successfully!
-              </p>
-            )}
-            {error && (
-              <p className={styles.ContactForm__errorMessage}>
-                There was an error sending your message. Please try again.
-              </p>
-            )} */}
-
             {form.fields.map((field, index) => {
               if (field.type === "textarea") {
                 return (
