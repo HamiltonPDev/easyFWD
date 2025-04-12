@@ -9,6 +9,8 @@ interface ButtonProps {
   size?: "small" | "medium" | "large" | "regular" | "rounded";
   border?: boolean;
   href?: string;
+  disabled?: boolean;
+  buttonType?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({

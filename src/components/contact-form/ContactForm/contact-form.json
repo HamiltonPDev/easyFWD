@@ -16,47 +16,48 @@
         "type": "text",
         "name": "firstName",
         "placeholder": "Enter your first name",
-        "required": true
+        "required": true,
+        "errorMessage": "Please enter your first name"
       },
       {
         "label": "Last name",
         "type": "text",
         "name": "lastName",
         "placeholder": "Enter your last name",
-        "required": true
+        "required": true,
+        "errorMessage": "Please enter your last name"
       },
       {
         "label": "Email",
         "type": "email",
         "name": "email",
         "placeholder": "Enter your email",
-        "required": true
+        "required": true,
+        "errorMessage": "Please enter a valid email address"
       },
       {
         "label": "Phone number",
         "type": "tel",
         "name": "phone",
         "placeholder": "Enter your phone number",
-        "required": false
+        "required": true,
+        "errorMessage": "Please enter a valid phone number"
       },
       {
-        "label": "Which product are you contacting us about?",
+        "label": "Which service are you contacting us about?",
         "type": "select",
-        "name": "product",
+        "name": "service",
         "placeholder": "Select one...",
         "required": true,
-        "options": [
-          "EasyFWD",
-          "EasyFlux",
-          "EasyAnalyse",
-          "General / Not sure"
-        ]
+        "errorMessage": "Please select a service",
+        "options": ["EasyFWD", "EasyFlux", "EasyAnalyse", "General / Not sure"]
       },
       {
         "label": "What best describes your situation?",
         "type": "radio",
         "name": "situation",
         "required": true,
+        "errorMessage": "Please select a situation",
         "options": [
           "Book a Demo",
           "Pricing & Plans",
@@ -72,17 +73,20 @@
         "name": "message",
         "placeholder": "Type your message...",
         "required": true,
+        "errorMessage": "Please enter a message",
         "rows": 10
       },
       {
         "label": "I accept the Terms",
         "type": "checkbox",
         "name": "terms",
-        "required": true
+        "required": true,
+        "errorMessage": "You must accept the terms to proceed"
       }
     ],
     "submit-button": {
-      "linkText": "Submit"
+      "linkText": "Submit",
+      "type": "submit"
     }
   }
 }
