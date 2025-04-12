@@ -2,7 +2,8 @@
 import React from "react";
 import styles from "./Prices.module.scss";
 import { plans } from "../../../utils/Prices";
-import { FaCheckCircle } from "react-icons/fa";
+import { GoCheckCircleFill } from "react-icons/go";
+import { FaChevronRight } from "react-icons/fa";
 import { Button } from "../../shared/button/Button";
 
 export const Prices = () => {
@@ -65,34 +66,53 @@ export const Prices = () => {
                 </b>
                 <div className={styles.text}>Lorem ipsum dolor sit amet</div>
               </div>
-              <button
-                className={
-                  plan.buttonColor === "primary"
-                    ? styles.BlackBtn
-                    : styles.WhiteBtn
-                }
-              >
-                Get started
-              </button>
+              <div className={styles.Button}>
+                <Button
+                  text="Get started"
+                  color={
+                    plan.buttonColor === "primary" ? "WhiteBtn" : "BlackBtn"
+                  }
+                  border={false}
+                  onClick={() => {}}
+                />
+              </div>
               <div className={styles.Features}>
-                <p>Features</p>
-                <p>Everything in our brons plan:</p>
+                <div className={styles.Features__content}>
+                  <b className={styles.heading}>Features</b>
+                  <p className={styles.text}>Everything in our brons plan:</p>
+                </div>
                 <ul>
                   {plan.features.map((f, i) => (
                     <li key={i}>
-                      <FaCheckCircle /> {f}
+                      <GoCheckCircleFill />
+                      <span>{f}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-              <a href="#">Learn More →</a>
+              <div className={styles.LearnMore}>
+                <Button
+                  text="Learn More"
+                  color={plan.buttonColor === "primary" ? "white" : "primary"}
+                  size="rounded"
+                  border={false}
+                  onClick={() => {}}
+                />
+                <FaChevronRight />
+              </div>
             </div>
           ))}
         </div>
 
         <div className={styles.LargeTeams}>
-          <p>For teams larger than 100 members.</p>
-          <button className={styles.QuoteBtn}>Request a quote</button>
+          <b>For teams larger than 100 members.</b>
+          <Button
+            text="Request a quote"
+            color="secondary"
+            size="medium"
+            border={false}
+            onClick={() => {}}
+          />
         </div>
       </div>
     </section>
