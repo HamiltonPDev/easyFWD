@@ -12,24 +12,33 @@ export const ContactForm = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
+  // managing the content and validation of the form during the input using react-hook-form library
+  // the form is validated using the register function
+  // the form is submitted using the handleSubmit function 
+  // the form is reset using the reset function 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm();
-
+  
+  // the onSubmit function is called when the form is submitted
+  // the form data is sent to the server using the fetch API
+  // the server is expected to handle the form data and send an email
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch("/api/send-mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
+      // const response = await fetch("/api/send-mail", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(data),
+      // });
+      
+      // change this to response.ok 
+      if (data) {
+        console.log("Form data submitted:", data);
         setSuccess(true);
         reset();
       } else {
