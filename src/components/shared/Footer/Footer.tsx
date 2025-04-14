@@ -57,7 +57,7 @@ export const Footer = () => {
                   <Link href="/easyfwd">EasyFWD</Link>
                 </li>
                 <li>
-                  <Link href="/easyflux">EasyFlux</Link>
+                  <Link href="/easyflux">easyFlux</Link>
                 </li>
                 <li>
                   <Link href="/easyanalyse">EasyAnalyse</Link>
