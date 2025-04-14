@@ -28,16 +28,16 @@ export const ContactForm = () => {
   // the server is expected to handle the form data and send an email
   const onSubmit = async (data: any) => {
     try {
-      // const response = await fetch("/api/send-mail", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(data),
-      // });
+      const response = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       // change this to response.ok
-      if (data) {
+      if (response.ok) {
         console.log("Form data submitted:", data);
         setSuccess(true);
         reset();
@@ -179,3 +179,4 @@ export const ContactForm = () => {
     </section>
   );
 };
+
