@@ -50,7 +50,7 @@
         "placeholder": "Select one...",
         "required": true,
         "errorMessage": "Please select a service",
-        "options": ["EasyFWD", "EasyFlux", "EasyAnalyse", "General / Not sure"]
+        "options": ["EasyFWD", "easyFlux", "EasyAnalyse", "General / Not sure"]
       },
       {
         "label": "What best describes your situation?",

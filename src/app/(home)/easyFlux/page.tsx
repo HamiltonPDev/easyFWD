@@ -1,7 +1,7 @@
 export default function EasyFWD() {
   return (
     <main>
-      <h1>EasyFlux Page</h1>
+      <h1>easyFlux Page</h1>
     </main>
   );
 }

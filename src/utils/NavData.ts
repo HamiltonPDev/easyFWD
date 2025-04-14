@@ -4,7 +4,7 @@ export const navItems = [
     path: "/",
   },
   {
-    label: "EasyFlux",
+    label: "easyFlux",
     path: "/easyFlux",
   },
   {
