@@ -4,8 +4,6 @@
 .ContactForm__contactDetails li,
 .ContactForm__form,
 .ContactForm__label,
-.ContactForm__labelSelect,
-.ContactForm__fieldset,
 .ContactForm__radioLabel,
 .ContactForm__labelTextarea,
 .ContactForm__labelCheckbox,
@@ -50,13 +48,11 @@
 .ContactForm,
 .ContactForm__header,
 .ContactForm__label,
-.ContactForm__labelSelect,
 .ContactForm__labelTextarea,
 .ContactForm__labelCheckbox {
   flex-direction: column;
 }
 .ContactForm__label,
-.ContactForm__labelSelect,
 .ContactForm__labelTextarea,
 .ContactForm__labelCheckbox,
 .ContactForm__successMessage,
@@ -107,22 +103,6 @@
     background: url("/Icons/chevron-down.svg") no-repeat right 0.75rem center;
     background-size: 1rem;
     padding-right: 2rem;
-  }
-
-  & fieldset {
-    flex-wrap: wrap;
-    border: none;
-    justify-content: space-between;
-    padding: 1rem 0rem;
-    gap: 0.5rem;
-
-    label {
-      width: 296px;
-      input {
-        width: 1.125rem;
-        height: 1.125rem;
-      }
-    }
   }
 }
 
@@ -194,6 +174,10 @@
 
     .ContactForm__label {
       max-width: 296px;
+    }
+
+    .noMaxWidth {
+      max-width: none;
     }
 
     .ContactForm__form,

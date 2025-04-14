@@ -12,20 +12,20 @@
   "form": {
     "fields": [
       {
-        "label": "First name",
+        "label": "Name",
         "type": "text",
-        "name": "firstName",
-        "placeholder": "Enter your first name",
+        "name": "name",
+        "placeholder": "Enter your name",
         "required": true,
-        "errorMessage": "Please enter your first name"
+        "errorMessage": "Please enter your name"
       },
       {
-        "label": "Last name",
+        "label": "Company name",
         "type": "text",
-        "name": "lastName",
-        "placeholder": "Enter your last name",
-        "required": true,
-        "errorMessage": "Please enter your last name"
+        "name": "company",
+        "placeholder": "Enter your company name",
+        "required": false,
+        "errorMessage": ""
       },
       {
         "label": "Email",
@@ -34,38 +34,6 @@
         "placeholder": "Enter your email",
         "required": true,
         "errorMessage": "Please enter a valid email address"
-      },
-      {
-        "label": "Phone number",
-        "type": "tel",
-        "name": "phone",
-        "placeholder": "Enter your phone number",
-        "required": true,
-        "errorMessage": "Please enter a valid phone number"
-      },
-      {
-        "label": "Which service are you contacting us about?",
-        "type": "select",
-        "name": "service",
-        "placeholder": "Select one...",
-        "required": true,
-        "errorMessage": "Please select a service",
-        "options": ["EasyFWD", "easyFlux", "EasyAnalyse", "General / Not sure"]
-      },
-      {
-        "label": "What best describes your situation?",
-        "type": "radio",
-        "name": "situation",
-        "required": true,
-        "errorMessage": "Please select a situation",
-        "options": [
-          "Book a Demo",
-          "Pricing & Plans",
-          "Technical Support",
-          "Partnership Inquiry",
-          "Feedback",
-          "Other"
-        ]
       },
       {
         "label": "Message",

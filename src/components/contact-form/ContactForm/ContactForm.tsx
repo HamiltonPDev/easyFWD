@@ -14,15 +14,15 @@ export const ContactForm = () => {
 
   // managing the content and validation of the form during the input using react-hook-form library
   // the form is validated using the register function
-  // the form is submitted using the handleSubmit function 
-  // the form is reset using the reset function 
+  // the form is submitted using the handleSubmit function
+  // the form is reset using the reset function
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm();
-  
+
   // the onSubmit function is called when the form is submitted
   // the form data is sent to the server using the fetch API
   // the server is expected to handle the form data and send an email
@@ -35,8 +35,8 @@ export const ContactForm = () => {
       //   },
       //   body: JSON.stringify(data),
       // });
-      
-      // change this to response.ok 
+
+      // change this to response.ok
       if (data) {
         console.log("Form data submitted:", data);
         setSuccess(true);
@@ -111,67 +111,6 @@ export const ContactForm = () => {
                 );
               }
 
-              if (field.type === "select") {
-                return (
-                  <label
-                    key={index}
-                    className={styles.ContactForm__labelSelect}
-                  >
-                    {field.label}
-                    <select
-                      {...register(field.name, { required: field.required })}
-                    >
-                      <option value="" disabled>
-                        {field.placeholder}
-                      </option>
-                      {field.options?.map((option: string, id: number) => (
-                        <option key={id} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                      {errors[field.name] && (
-                        <span className={styles.ContactForm__errorMessage}>
-                          {field.errorMessage}
-                        </span>
-                      )}
-                    </select>
-                  </label>
-                );
-              }
-
-              if (field.type === "radio") {
-                return (
-                  <fieldset
-                    key={index}
-                    className={styles.ContactForm__fieldset}
-                  >
-                    <legend className={styles.ContactForm__legend}>
-                      {field.label}
-                    </legend>
-                    {field.options?.map((option: string, id: number) => (
-                      <label
-                        key={id}
-                        className={styles.ContactForm__radioLabel}
-                      >
-                        <input
-                          {...register(field.name, {
-                            required: field.required,
-                          })}
-                          type="radio"
-                          value={option}
-                        />
-                        {option}
-                      </label>
-                    ))}
-                    {errors[field.name] && (
-                      <span className={styles.ContactForm__errorMessage}>
-                        {field.errorMessage}
-                      </span>
-                    )}
-                  </fieldset>
-                );
-              }
-
               if (field.type === "checkbox") {
                 return (
                   <label
@@ -197,7 +136,10 @@ export const ContactForm = () => {
               }
 
               return (
-                <label key={index} className={styles.ContactForm__label}>
+                <label
+                  key={index}
+                  className={`${styles.ContactForm__label} ${field.type === "email" ? styles.noMaxWidth : ""}`}
+                >
                   {field.label}
                   <input
                     type={field.type}
