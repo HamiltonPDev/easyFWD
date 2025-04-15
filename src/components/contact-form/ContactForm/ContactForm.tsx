@@ -165,12 +165,12 @@ export const ContactForm = () => {
 
             {isSubmitSuccessful && success && (
               <p className={styles.ContactForm__successMessage}>
-                Your message has been sent successfully!
+                {form.successMessage.description}
               </p>
             )}
             {error && (
               <p className={styles.ContactForm__errorMessage}>
-                There was an error sending your message. Please try again.
+                {form.errorMessage.description}
               </p>
             )}
           </form>
@@ -179,4 +179,3 @@ export const ContactForm = () => {
     </section>
   );
 };
-
