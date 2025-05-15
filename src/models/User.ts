@@ -1,7 +1,8 @@
-import mongoose, { Document, Model, CallbackError } from 'mongoose';
+import mongoose, { Document, Model, CallbackError, Types } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 export interface IUser extends Document {
+  _id: Types.ObjectId;
   email: string;
   passwordHash: string;
   role: 'admin' | 'editor';
@@ -66,7 +67,7 @@ userSchema.statics.findByEmail = function (email: string) {
 };
 
 // Prevent mongoose from creating a new model if it already exists
-export const User = (mongoose.models.User as IUserModel) || 
-  mongoose.model<IUser, IUserModel>('User', userSchema);
+const User = (mongoose.models.User as IUserModel) || // This line checks if a model named 'User' already exists
+  mongoose.model<IUser, IUserModel>('User', userSchema); // This line creates a new model if it doesn't exist
 
 export default User; 

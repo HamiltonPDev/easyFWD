@@ -1,8 +1,18 @@
-import NextAuth from 'next-auth';
+import NextAuth, { DefaultSession } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { connectDB } from '@/lib/mongodb';
-import User from '@/models/User';
-import { AuthError } from 'next-auth';
+import { connectDB } from '../../../../lib/mongodb';
+import User from '../../../../models/User';
+
+declare module 'next-auth' {
+  interface User {
+    role: string;
+  }
+  interface Session {
+    user: {
+      role: string;
+    } & DefaultSession['user']
+  }
+}
 
 const handler = NextAuth({
   providers: [
@@ -14,7 +24,7 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new AuthError('Missing credentials');
+          throw new Error('Missing credentials');
         }
 
         try {
@@ -23,13 +33,13 @@ const handler = NextAuth({
           const user = await User.findByEmail(credentials.email);
           
           if (!user) {
-            throw new AuthError('No user found');
+            throw new Error('No user found');
           }
 
           const isValid = await user.comparePassword(credentials.password);
           
           if (!isValid) {
-            throw new AuthError('Invalid password');
+            throw new Error('Invalid password');
           }
 
           return {
@@ -39,7 +49,7 @@ const handler = NextAuth({
           };
         } catch (error) {
           console.error('Auth error:', error);
-          throw new AuthError('Authentication failed');
+          throw new Error('Authentication failed');
         }
       }
     })
@@ -56,7 +66,7 @@ const handler = NextAuth({
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).role = token.role;
+        session.user.role = token.role as string;
       }
       return session;
     }

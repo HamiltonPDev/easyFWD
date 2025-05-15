@@ -1,41 +1,44 @@
+# This docker-compose.yml file sets up a local development environment with MongoDB and a web-based admin interface (mongo-express).
+# It also defines persistent storage and a custom network for the services.
+
 version: '3.8'
 
 services:
+  # MongoDB database service
   mongodb:
-    image: mongo:latest
-    container_name: easyfwd-mongodb
+    image: mongo:latest                       # Uses the latest official MongoDB image from Docker Hub
+    container_name: easyfwd-mongodb           # Names the container for easier management
     ports:
-      - "27018:27017"
+      - "27018:27017"                         # Maps port 27018 on the host to 27017 in the container (MongoDB's default port)
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_INITDB_ROOT_USERNAME=admin      # Sets the root username for MongoDB
+      - MONGO_INITDB_ROOT_PASSWORD=admin123   # Sets the root password for MongoDB
     volumes:
-      - mongodb_data:/data/db
+      - mongodb_data:/data/db                 # Persists MongoDB data in a named Docker volume
     networks:
-      - easyfwd-network
+      - easyfwd-network                       # Connects to a custom Docker network
 
-  # This section defines a service called "mongo-express" which is a web-based MongoDB admin interface.
-  # It uses the official "mongo-express" Docker image.
+  # Mongo Express web-based MongoDB admin interface
   mongo-express:
-    image: mongo-express:latest                # Use the latest mongo-express image from Docker Hub
-    container_name: easyfwd-mongo-express      # Name the container for easier management
+    image: mongo-express:latest               # Uses the latest official mongo-express image
+    container_name: easyfwd-mongo-express     # Names the container for easier management
     ports:
-      - "8081:8081"                            # Expose port 8081 on the host to port 8081 in the container
+      - "8081:8081"                           # Exposes port 8081 for the web UI
     environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin  # Username to connect to MongoDB (should match your MongoDB service)
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin123 # Password to connect to MongoDB (should match your MongoDB service)
-      - ME_CONFIG_MONGODB_SERVER=mongodb       # The hostname of the MongoDB service (as defined above)
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin     # Username to connect to MongoDB (should match the MongoDB service)
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=admin123  # Password to connect to MongoDB (should match the MongoDB service)
+      - ME_CONFIG_MONGODB_SERVER=mongodb          # Hostname of the MongoDB service (as defined above)
     depends_on:
-      - mongodb                                # Wait for the "mongodb" service to be ready before starting
+      - mongodb                              # Ensures mongo-express starts after MongoDB is ready
     networks:
-      - easyfwd-network                        # Connect to the same network as MongoDB
+      - easyfwd-network                      # Connects to the same custom network as MongoDB
 
-# The following section defines a named volume for MongoDB data persistence.
+# Named volume for persisting MongoDB data, so data is not lost when containers are removed
 volumes:
   mongodb_data:
-    name: easyfwd-mongodb-data                 # The actual name of the Docker volume
+    name: easyfwd-mongodb-data               # Explicitly names the Docker volume
 
-# This section defines a custom network for the services to communicate.
+# Custom network for inter-service communication, isolating them from other containers
 networks:
   easyfwd-network:
-    name: easyfwd-network                      # The actual name of the Docker network
+    name: easyfwd-network                    # Explicitly names the Docker network
