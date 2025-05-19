@@ -19,7 +19,7 @@ export default withAuth(
       // It receives the user's token and only allows access if the user's role is 'admin'.
       authorized: ({ token }) => {
         // Only allow access to admin routes if user has admin role
-        return token?.role === 'admin';
+        return token?.role === 'admin' || token?.role === 'editor';
       },
     },
   }
