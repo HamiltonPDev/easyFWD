@@ -24,3 +24,4 @@ export async function GET() {
     id: fetchedUser?._id.toString(),
   });
 } 
+ 
