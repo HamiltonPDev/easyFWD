@@ -28,10 +28,12 @@ export default function LoginPage() {
       if (result?.error) {
         setError(result.error);
       } else {
-        router.push("/admin");
-        router.refresh();
+        console.log("Login successful");
+        // router.push("/admin");
+        // router.refresh();
       }
     } catch (error) {
+      console.error(error);
       setError("An unexpected error occurred");
     } finally {
       setLoading(false);
