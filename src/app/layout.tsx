@@ -1,9 +1,13 @@
-// "use client";
-// import type { Metadata } from "next";
+"use client";
+import { httpBatchLink } from "@trpc/client";
+import { trpc } from "../utils/trpc";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
+import superjson from "superjson";
 import { Header } from "app/components/shared/Header";
 import { Footer } from "app/components/shared/Footer";
 import "app/scss/globals.scss";
+import { ReactNode, useState } from "react";
 
 // if you loading a variable font, you dont need to specify th font weight
 const inter = Inter({
@@ -18,15 +22,39 @@ const inter = Inter({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+  // This code sets up the stateful clients needed for tRPC and React Query in the app.
+  //
+  // 1. `queryClient` is a singleton instance of React Query's QueryClient, which manages caching and fetching of server data.
+  //    It's created once using useState with a lazy initializer to ensure it's not recreated on every render.
+  const [queryClient] = useState(() => new QueryClient());
+
+  // 2. `trpcClient` is a singleton instance of the tRPC client, also created once using useState.
+  //    - It uses the `httpBatchLink` to batch multiple tRPC requests into a single HTTP request to `/api/trpc`.
+  //    - The `transformer: superjson` option enables advanced serialization for complex data types.
+  const [trpcClient] = useState(() =>
+    trpc.createClient({
+      links: [
+        httpBatchLink({
+          url: "/api/trpc",
+          transformer: superjson,
+        }),
+      ],
+    })
+  );
+
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+      <html lang="en">
+        <body className={inter.className}>
+          <Header />
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+          <Footer />
+        </body>
+      </html>
+    </trpc.Provider>
   );
 }

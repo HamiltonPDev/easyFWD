@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import connectDB from '../../../lib/mongodb';
-import User from '../../../models/User';
+import UserModel from '../../../models/User';
 
 export async function GET() {
   await connectDB();
 
   // Create a test user if not exists
-  let user = await User.findOne({ email: 'test@example.com' });
+  let user = await UserModel.findOne({ email: 'test@example.com' });
   if (!user) {
-    user = await User.create({
+    user = await UserModel.create({
       email: 'test@example.com',
       passwordHash: 'testpassword',
       role: 'admin',
@@ -16,7 +16,7 @@ export async function GET() {
   }
 
   // Fetch the user
-  const fetchedUser = await User.findOne({ email: 'test@example.com' });
+  const fetchedUser = await UserModel.findOne({ email: 'test@example.com' });
 
   return NextResponse.json({
     email: fetchedUser?.email,
