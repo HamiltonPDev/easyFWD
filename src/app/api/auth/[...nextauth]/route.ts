@@ -1,7 +1,8 @@
-import NextAuth, { DefaultSession } from 'next-auth';
+import NextAuth, { DefaultSession, SessionStrategy, Session, User } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectDB } from '../../../../lib/mongodb';
-import User from '../../../../models/User';
+import UserModel from '../../../../models/User';
 
 // This code sets up NextAuth authentication for a Next.js API route using credentials (email and password) and integrates with a MongoDB user model.
 
@@ -20,7 +21,7 @@ declare module 'next-auth' {
 }
 
 // 2. NextAuth Handler Configuration
-const handler = NextAuth({
+export const authOptions = {
   // Providers define how users can sign in. Here, we use a CredentialsProvider for email/password login.
   providers: [
     CredentialsProvider({
@@ -41,7 +42,7 @@ const handler = NextAuth({
           await connectDB();
           
           // Find the user by email using a static method on the User model.
-          const user = await User.findByEmail(credentials.email);
+          const user = await UserModel.findByEmail(credentials.email);
           
           // If no user is found, throw an error.
           if (!user) {
@@ -70,20 +71,20 @@ const handler = NextAuth({
   ],
   // Use JWT (JSON Web Token) strategy for session management.
   session: {
-    strategy: 'jwt',
+    strategy: 'jwt' as SessionStrategy,
   },
   // Callbacks allow customizing the JWT and session objects.
   callbacks: {
     // The jwt callback is called whenever a JWT is created or updated.
-    async jwt({ token, user }) {
+    async jwt({ token, user }: { token: JWT, user: User }) {
       // If a user object is present (i.e., on sign-in), add the user's role to the token.
       if (user) {
-        token.role = user.role;
+        token.role = user.role; 
       }
       return token;
     },
     // The session callback is called whenever a session is checked or created.
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session, token: JWT}) {
       // Add the role from the token to the session's user object.
       if (session.user) {
         session.user.role = token.role as string;
@@ -95,7 +96,9 @@ const handler = NextAuth({
   pages: {
     signIn: '/login',
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 // Export the handler for both GET and POST HTTP methods, as required by Next.js API routes.
 export { handler as GET, handler as POST }; 

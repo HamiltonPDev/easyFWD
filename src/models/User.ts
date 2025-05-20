@@ -67,7 +67,7 @@ userSchema.statics.findByEmail = function (email: string) {
 };
 
 // Prevent mongoose from creating a new model if it already exists
-const User = (mongoose.models.User as IUserModel) || // This line checks if a model named 'User' already exists
-  mongoose.model<IUser, IUserModel>('User', userSchema); // This line creates a new model if it doesn't exist
+const UserModel = (mongoose.models.User as IUserModel) || 
+  mongoose.model<IUser, IUserModel>('User', userSchema);
 
-export default User; 
+export default UserModel; 
