@@ -6,17 +6,17 @@ export async function GET() {
   await connectDB();
 
   // Create a test user if not exists
-  let user = await UserModel.findOne({ email: 'test@example.com' });
+  let user = await UserModel.findOne({ email: 'admin@easyfwd.com' });
   if (!user) {
     user = await UserModel.create({
-      email: 'test@example.com',
-      passwordHash: 'testpassword',
+      email: 'admin@easyfwd.com',
+      passwordHash: 'admin1234`',
       role: 'admin',
     });
   }
 
   // Fetch the user
-  const fetchedUser = await UserModel.findOne({ email: 'test@example.com' });
+  const fetchedUser = await UserModel.findOne({ email: 'admin@easyfwd.com' });
 
   return NextResponse.json({
     email: fetchedUser?.email,
