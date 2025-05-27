@@ -14,6 +14,8 @@ npm run dev
 The application will run at:  
 [`http://localhost:3000`](http://localhost:3000)
 
+**To access the login page, navigate to [`/login`](http://localhost:3000/login) in your browser.**
+
 ## Notes
 
 - This project is **not publicly available** on GitHub due to privacy considerations for the client.

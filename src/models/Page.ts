@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Types, Schema } from 'mongoose';
+import mongoose, { Document, Model, Types } from 'mongoose';
 
 export interface Section {
   type: string; // e.g., 'hero', 'mainProducts', etc.
@@ -20,10 +20,11 @@ export interface IPageModel extends Model<IPage> {
   findBySlug(slug: string): Promise<IPage | null>;
 }
 
-const SectionSchema = new Schema<Section>({
-  type: { type: String, required: true },
-  data: { type: Schema.Types.Mixed, required: true },
-}, { _id: false });
+// Section schema for flexible page sections
+const SectionSchema = new mongoose.Schema({
+  type: { type: String, required: true }, // e.g., 'hero', 'features', 'faq', etc.
+  data: { type: mongoose.Schema.Types.Mixed, required: true }, // flexible content per section type
+});
 
 const pageSchema = new mongoose.Schema<IPage, IPageModel>({
   title: {
@@ -41,10 +42,7 @@ const pageSchema = new mongoose.Schema<IPage, IPageModel>({
   imageUrl: {
     type: String,
   },
-  sections: {
-    type: [SectionSchema],
-    default: [],
-  },
+  sections: [SectionSchema], // Array of sections for this page
 }, {
   timestamps: true, // Adds createdAt and updatedAt
 });
@@ -55,6 +53,18 @@ const pageSchema = new mongoose.Schema<IPage, IPageModel>({
 pageSchema.statics.findBySlug = function (slug: string) {
   return this.findOne({ slug });
 };
+
+// Example for Hero section data structure (for reference):
+// {
+//   type: 'hero',
+//   data: {
+//     title: 'Welcome to EasyFWD',
+//     subtitle: 'Your digital solution',
+//     imageUrl: '/images/hero.jpg',
+//     buttonText: 'Get Started',
+//     buttonLink: '/signup'
+//   }
+// }
 
 // The following line ensures that the Page model is not redefined if it already exists (which can happen in development with hot reloading).
 // It checks if mongoose.models.Page exists; if so, it uses that, otherwise it creates a new model with the schema.
