@@ -22,6 +22,12 @@ The application will run at:
 
 ## Admin Login (Development Only)
 
+To the .env file, add the following:
+
+```
+MONGODB_URI=mongodb://admin:admin123@localhost:27018/easyfwd?authSource=admin
+```
+
 To access the admin dashboard locally, use the following credentials:
 
 **Email:** `admin@easyfwd.com`
