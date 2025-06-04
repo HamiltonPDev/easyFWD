@@ -1,27 +1,27 @@
 import mongoose, { Document, Model, CallbackError, Types } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-// This interface describes the shape of a User document in MongoDB.
-// It extends Mongoose's Document type and adds our custom fields and methods.
+/* This interface describes the shape of a User document in MongoDB.
+It extends Mongoose's Document type and adds our custom fields and methods. */
 export interface IUser extends Document {
   _id: Types.ObjectId; // MongoDB ObjectId for the user
-  email: string; // User's email address (unique)
-  passwordHash: string; // Hashed password
-  role: 'admin' | 'editor'; // User's role, either admin or editor
-  createdAt: Date; // Timestamp when user was created
-  updatedAt: Date; // Timestamp when user was last updated
-  comparePassword(candidatePassword: string): Promise<boolean>; // Method to compare passwords
+  email: string; // (unique)
+  passwordHash: string; 
+  role: 'admin' | 'editor'; 
+  createdAt: Date; 
+  updatedAt: Date; 
+comparePassword(candidatePassword: string): Promise<boolean>; // Method to compare passwords
 }
 
-// This interface describes static methods available on the User model itself.
+/* This interface describes static methods available on the User model itself. */
 export interface IUserModel extends Model<IUser> {
-  findByEmail(email: string): Promise<IUser | null>; // Static method to find a user by email
+  findByEmail(email: string): Promise<IUser | null>; 
 }
 
-// Define the schema for the User collection in MongoDB.
+/* Define the schema for the User collection in MongoDB. */
 const userSchema = new mongoose.Schema<IUser, IUserModel>(
   {
-    // Email field: required, unique, trimmed, lowercased, and must match email regex
+    /* Email field: required, unique, trimmed, lowercased, and must match email regex */
     email: {
       type: String,
       required: [true, 'Email is required'],
@@ -30,12 +30,12 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>(
       lowercase: true,
       match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'],
     },
-    // Password hash field: required
+    /* Password hash field: required */
     passwordHash: {
       type: String,
       required: [true, 'Password is required'],
     },
-    // Role field: can be 'admin' or 'editor', defaults to 'editor'
+    /* Role field: can be 'admin' or 'editor', defaults to 'editor' */
     role: {
       type: String,
       enum: ['admin', 'editor'],
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema<IUser, IUserModel>(
     },
   },
   {
-    timestamps: true, // Automatically adds createdAt and updatedAt fields
+    timestamps: true, /* Automatically adds createdAt and updatedAt fields */
   }
 );
 
