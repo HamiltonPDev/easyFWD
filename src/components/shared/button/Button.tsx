@@ -2,6 +2,7 @@ import styles from "./Button.module.scss";
 import Link from "next/link";
 
 interface ButtonProps {
+  type?: "button" | "submit" | "reset";
   text?: string;
   onClick: () => void;
   icon?: React.ReactNode;
@@ -20,6 +21,7 @@ interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({
+  type = "button",
   text,
   onClick,
   icon,
@@ -40,7 +42,7 @@ export const Button: React.FC<ButtonProps> = ({
       {content}
     </Link>
   ) : (
-    <button className={className} onClick={onClick}>
+    <button className={className} onClick={onClick} type={type}>
       {content}
     </button>
   );

@@ -13,12 +13,15 @@ export const LoginForm = () => {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
+    setError(null); // Reset error state when form is submitted
+    setLoading(true); // Set loading state to true when form is submitted
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
+
+    console.log("email", email);
+    console.log("password", password);
 
     try {
       const result = await signIn("credentials", {
@@ -69,6 +72,7 @@ export const LoginForm = () => {
             />
           </div>
           <Button
+            type="submit"
             text="Sign in"
             color="secondary"
             size="medium"

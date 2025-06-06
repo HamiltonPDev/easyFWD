@@ -29,13 +29,14 @@ function requireAdminOrEdit(session?: SessionWithUser) {
   }
 }
 
+/* tRPC-procedure met duidelijke inputvalidatie en foutafhandeling voor de pagina's */
 export const pageRouter = t.router({
-  // Get all pages
+  /* Get all pages */
   getAll: t.procedure.query(async () => {
     return PageModel.find().sort({ createdAt: -1 });
   }),
 
-  // Get a page by slug (with sections)
+  /* Get a page by slug (with sections) */
   getBySlug: t.procedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ input }) => {
@@ -44,7 +45,7 @@ export const pageRouter = t.router({
       return page;
     }),
 
-  // Create a new page
+  /* Create a new page */
   create: t.procedure
     .input(z.object({
       title: z.string().min(1),
@@ -61,7 +62,7 @@ export const pageRouter = t.router({
       return page;
     }),
 
-  // Update a page by slug
+  /* Update a page by slug */
   update: t.procedure
     .input(z.object({
       slug: z.string(),
@@ -82,7 +83,7 @@ export const pageRouter = t.router({
       return page;
     }),
 
-  // Delete a page by slug
+  /* Delete a page by slug */
   delete: t.procedure
     .input(z.object({ slug: z.string() }))
     .mutation(async ({ input, ctx }) => {
@@ -92,7 +93,7 @@ export const pageRouter = t.router({
       return { success: true };
     }),
 
-  // Update a section by type
+  /* Update a section by type */
   updateSection: t.procedure
     .input(
       z.object({
@@ -112,7 +113,7 @@ export const pageRouter = t.router({
       return page;
     }),
 
-  // Add a new section to a page
+  /* Add a new section to a page */
   addSection: t.procedure
     .input(
       z.object({
